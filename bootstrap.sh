@@ -1,4 +1,6 @@
-#!/bin/bash -x
+#!/dumb-init /bin/bash
+
+set -x
 
 skydns_key=${ELASTICSEARCH_SKYDNS:-/local/skydns/elasticsearch}
 local_address=${LOCAL_ADDRESS:-NOADDR}
@@ -22,4 +24,4 @@ declare -p hosts_str
     
 echo "Starting elasticsearch with master hosts: ${hosts_str}"    
     
-/docker-entrypoint.sh --discovery.zen.ping.unicast.hosts=${hosts_str} $*
+exec /docker-entrypoint.sh --discovery.zen.ping.unicast.hosts=${hosts_str} $*
