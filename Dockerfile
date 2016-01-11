@@ -1,4 +1,4 @@
-FROM elasticsearch:2.1
+FROM elasticsearch:1.5
 
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
